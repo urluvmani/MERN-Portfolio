@@ -1,23 +1,35 @@
+export const dynamic = "force-dynamic";
 import ClientAboutView from "@/components/client-view/about";
 import ClientContactView from "@/components/client-view/contact";
 import ClientExperienceAndEducationView from "@/components/client-view/experience";
 import ClientHomeView from "@/components/client-view/home";
 import ClientProjectView from "@/components/client-view/project";
 
-async function extractAllDatas(currentSection) {
+export async function extractAllDatas(currentSection) {
   const baseUrl =
     typeof window === "undefined"
-      ? process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+      ? process.env.NEXT_PUBLIC_BASE_URL
       : "";
 
-  const res = await fetch(`${baseUrl}/api/${currentSection}/get`, {
-    method: "GET",
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch(`${baseUrl}/api/${currentSection}/get`, {
+      method: "GET",
+      cache: "no-store",
+    });
 
-  const data = await res.json();
-  return data?.data;
+    if (!res.ok) {
+      console.error("❌ Fetch failed with status:", res.status);
+      return [];
+    }
+
+    const jsonData = await res.json();
+    return jsonData?.data || [];
+  } catch (error) {
+    console.error("❌ Fetch error:", error.message);
+    return [];
+  }
 }
+
 
 
 export default async function Home() {
