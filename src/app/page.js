@@ -5,10 +5,10 @@ import ClientExperienceAndEducationView from "@/components/client-view/experienc
 import ClientHomeView from "@/components/client-view/home";
 import ClientProjectView from "@/components/client-view/project";
 
-export async function extractAllDatas(currentSection) {
+async function extractAllDatas(currentSection) {
   const baseUrl =
     typeof window === "undefined"
-      ? process.env.NEXT_PUBLIC_BASE_URL
+      ? process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
       : "";
 
   try {
