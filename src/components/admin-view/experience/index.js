@@ -47,7 +47,7 @@ export default function AdminExperienceView({
         <div className="mb-10">
           {data && data.length
             ? data.map((item) => (
-                <div className="flex flex-col gap-4 border p-4 border-green-600">
+                <div className="flex flex-col gap-4 border my-2 rounded-md p-4 border-green-600">
                   <p>{item.position}</p>
                   <p>{item.company}</p>
                   <p>{item.duration}</p>

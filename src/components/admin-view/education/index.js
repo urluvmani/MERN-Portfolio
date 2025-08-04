@@ -31,7 +31,7 @@ export default function AdminEducationView({handleSaveData, formData, setFormDat
   <div className="mb-10">
           {data && data.length
             ? data.map((item) => (
-                <div className="flex flex-col gap-4 border p-4 border-green-600">
+                <div className="flex my-2 rounded-md flex-col gap-4 border p-4 border-green-600">
                   <p>{item.degree}</p>
                   <p>{item.college}</p>
                   <p>{item.year}</p>

@@ -33,17 +33,22 @@ const socialIcons = [
   {
     id: "facebook",
     icon: (
+    
       <FaFacebookF
         color="rgba(13, 183, 96, 1)"
         className="w-[40px] h-[40px] "
       />
+  
     ),
+    url:"https://www.facebook.com/abdulrehman.yt.5"
   },
   {
     id: "twitter",
     icon: (
       <FaTwitter color="rgba(13, 183, 96, 1)" className="w-[40px] h-[40px] " />
     ),
+    url:"https://x.com/home"
+
   },
   {
     id: "linkedin",
@@ -53,6 +58,7 @@ const socialIcons = [
         className="w-[40px] h-[40px] "
       />
     ),
+    url:"https://www.linkedin.com/in/abdul-rehman-046792377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
   },
   {
     id: "instagram",
@@ -62,6 +68,7 @@ const socialIcons = [
         className="w-[40px] h-[40px] "
       />
     ),
+    url:"https://www.instagram.com/b0ld._.boy?igsh=b2ZuODg1d2kyc2lv"
   },
 ];
 
@@ -103,9 +110,12 @@ export default function ClientHomeView({ data }) {
             </p>
             <motion.div className="flex gap-3 cursor-pointer">
               {socialIcons.map((item) => (
-                <motion.div
+                <motion.a
+
                   key={item.id}
                   initial={{ scale: 0 }}
+                  target="_blank"
+                  href={item.url}
                   animate={{ rotate: 360, scale: 1 }}
                   transition={{
                     type: "spring",
@@ -117,7 +127,7 @@ export default function ClientHomeView({ data }) {
                   whileTap={{ scale: 0.8, rotate: -360, borderRadius: "100%" }}
                 >
                   {item.icon}
-                </motion.div>
+                </motion.a>
               ))}
             </motion.div>
           </div>
@@ -125,17 +135,17 @@ export default function ClientHomeView({ data }) {
             <motion.div
               drag
               dragConstraints={containerRef}
-              className="w-[400px] h-[400px] relative bg-green-main"
+              className="md:w-[400px] md:h-[400px] w-[200px] h-[300px] relative "
             >
-              <div className="w-[400px] h-[400px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
+              <div className="md:w-[300px] w-[200px] md:h-[400px] h-[270px] top-2 md:top-[30px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
               <Image
                 src={aiImage}
                 alt="Profile Picture"
-                layout="responsive"
+                layout="intrinsic" // or "responsive", depending on parent container
                 quality={100}
                 height={300}
                 width={300}
-                className="absolute top-[-15px]"
+                className="absolute h-[150px] md:h-[250px] rounded-md top-[-10px] md:top-[-15px]"
               />
             </motion.div>
           </motion.div>

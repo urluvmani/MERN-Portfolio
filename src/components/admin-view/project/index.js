@@ -36,7 +36,7 @@ export default function AdminProjectView({ formData, setFormData , handleSaveDat
       <div className="mb-10">
           {data && data.length
             ? data.map((item) => (
-                <div className="flex flex-col gap-4 border p-4 border-green-600">
+                <div className="flex flex-col my-2 rounded-md gap-4 border p-4 border-green-600">
                   <p>{item.name}</p>
                   <p>{item.technologies}</p>
                   <p>{item.website}</p>
