@@ -5,15 +5,20 @@ import ClientHomeView from "@/components/client-view/home";
 import ClientProjectView from "@/components/client-view/project";
 
 async function extractAllDatas(currentSection) {
-  const res = await fetch(`http://localhost:3000/api/${currentSection}/get`, {
+  const baseUrl =
+    typeof window === "undefined"
+      ? process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+      : "";
+
+  const res = await fetch(`${baseUrl}/api/${currentSection}/get`, {
     method: "GET",
     cache: "no-store",
   });
 
   const data = await res.json();
-
-  return data && data.data;
+  return data?.data;
 }
+
 
 export default async function Home() {
   const homeSectionData = await extractAllDatas("home");
